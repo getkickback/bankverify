@@ -111,7 +111,14 @@ const Account = {
     return this.checksumForClearing() ? 5 : 4;
   },
   checksumForClearing () {
-    return this.bankData().checksumForClearing || false;
+    if (this.bankData().checksumForClearing) {
+      const clearing = this.digits().substr(0, 5);
+      if (!Utils.mod10(clearing, false)) {
+        return false;
+      }
+      return true;
+    }
+    return false;
   },
   digits () {
     return this.getAccountNumber().replace(/\D/g, '');
