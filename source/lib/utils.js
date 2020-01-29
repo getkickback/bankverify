@@ -1,12 +1,4 @@
 const Utils = {
-  calculateWeightlessMod10(value) {
-    const sum = value.split('').reduce(
-      (carry, digit) => carry + parseInt(digit),
-      0,
-    );
-    return sum % 10;
-  },
-
   mod10(value) {
     const sum = value.split('').reverse().reduce(
       (carry, digit, idx) => {
