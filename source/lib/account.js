@@ -112,11 +112,11 @@ const Account = {
   },
   checksumForClearing () {
     if (this.bankData().checksumForClearing) {
-      const clearing = this.digits().substr(0, 5);
-      if (!Utils.mod10(clearing, false)) {
-        return false;
+      if (this.bank() !== 'Swedbank') {
+        return true;
       }
-      return true;
+      const digits = this.digits();
+      return Utils.mod10(digits.substr(5));
     }
     return false;
   },

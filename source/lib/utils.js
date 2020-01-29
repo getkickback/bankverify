@@ -1,8 +1,16 @@
 const Utils = {
-  mod10(value, weighted = true) {
+  calculateWeightlessMod10(value) {
+    const sum = value.split('').reduce(
+      (carry, digit) => carry + parseInt(digit),
+      0,
+    );
+    return sum % 10;
+  },
+
+  mod10(value) {
     const sum = value.split('').reverse().reduce(
       (carry, digit, idx) => {
-        const weight = weighted ? (idx + 1) % 2 === 0 ? 2 : 1 : 1;
+        const weight = (idx + 1) % 2 === 0 ? 2 : 1;
         let tmp = parseInt(digit, 10) * weight;
         if (tmp > 9) {
           tmp -= 9;
