@@ -14,7 +14,7 @@ describe('Account - Serial number', () => {
   });
 
   it('should include the 5th digit for Swedbank if it is not the part of clearing', () => {
-    account.init('8327-9042924507').serialNumber().should.eql('9042924507');
+    account.init('8324-6042924507').serialNumber().should.eql('6042924507');
     account.init('8326-1042924507').serialNumber().should.eql('0042924507');
   });
 
