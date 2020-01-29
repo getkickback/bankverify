@@ -13,6 +13,11 @@ describe('Account - Serial number', () => {
     account.init('6000-000000000').serialNumberLength().should.eql({ min: 8, max: 9 });
   });
 
+  it('should include the 5th digit for Swedbank if it is not checksum of clearing', () => {
+    account.init('832459938517860').serialNumber().should.eql('9938517860');
+    account.init('83271042924507').serialNumber().should.eql('1042924507');
+  });
+
   it('should return the digits after the first four digits', () => {
     account.init('12345678').serialNumber().should.eql('5678');
   });

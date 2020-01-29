@@ -111,7 +111,14 @@ const Account = {
     return this.checksumForClearing() ? 5 : 4;
   },
   checksumForClearing () {
-    return this.bankData().checksumForClearing || false;
+    if (this.bankData().checksumForClearing) {
+      if (this.bank() !== 'Swedbank') {
+        return true;
+      }
+      const digits = this.digits();
+      return Utils.mod10(digits.substr(5));
+    }
+    return false;
   },
   digits () {
     return this.getAccountNumber().replace(/\D/g, '');
