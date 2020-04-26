@@ -1,5 +1,12 @@
+
 # Bankverify
 
+KickBack notes
+- Cannot be used with Node 12 as is, will throw errors about primordials.
+- To run tests: `./node_modules/.bin/gulp test`
+
+
+## Upstream README.md:
 I needed a way to do a quick verification of Swedish bank accounts. Supports personal accounts from a wide variety of banks, Bankgiro as well as Plusgiro.
 
 Heavily influenced by https://github.com/barsoom/banktools-se
